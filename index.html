@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakesh Mali | .NET Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0d0c0a;--ink2:#36332e;--ink3:#78756f;
+  --cream:#f7f3ed;--cream2:#ece7de;--cream3:#e0d9ce;
+  --accent:#c4581f;--accent2:#e8742f;--accentl:#f5ddd0;
+  --navy:#1a3a5c;--navyl:#d4e3f0;
+  --green:#245c3e;--greenl:#d0e9db;
+  --gold:#9a6f10;--goldl:#f2e4c0;
+  --purple:#5c3a7a;--purplel:#e4d5f5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.65}
+
+/* ══════════════════════════════════════
+   NAVBAR — with separators & active state
+══════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:64px;
+  background:rgba(247,243,237,0.97);
+  backdrop-filter:blur(18px);
+  border-bottom:2px solid var(--cream3);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+}
+.nav-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;color:var(--accent);
+  letter-spacing:-0.02em;
+  display:flex;align-items:center;gap:0.5rem;
+  text-decoration:none;
+}
+.nav-brand-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);display:inline-block;
+}
+
+/* Nav links with | separators */
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none}
+.nav-sep{
+  width:1px;height:18px;
+  background:var(--cream3);
+  margin:0 0.2rem;
+  flex-shrink:0;
+}
+.nav-menu a{
+  display:block;padding:0.4rem 0.85rem;
+  font-size:0.8rem;font-weight:500;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--ink3);text-decoration:none;
+  border-radius:6px;
+  transition:all 0.18s;
+  white-space:nowrap;
+}
+.nav-menu a:hover{color:var(--accent);background:var(--accentl)}
+.nav-menu a.active{color:var(--accent);font-weight:700}
+.nav-hire-wrap{margin-left:0.75rem}
+.nav-hire{
+  background:var(--accent);color:#fff!important;
+  padding:0.45rem 1.2rem!important;
+  border-radius:7px;
+  font-size:0.8rem!important;
+  box-shadow:0 2px 8px rgba(196,88,31,0.3);
+}
+.nav-hire:hover{background:#a84718!important;transform:translateY(-1px)}
+
+/* Mobile hamburger */
+.nav-burger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:6px;border:none;background:none;
+}
+.nav-burger span{
+  display:block;width:24px;height:2px;
+  background:var(--ink);border-radius:2px;
+  transition:all 0.25s;
+}
+.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile menu drawer */
+.nav-mobile{
+  display:none;
+  position:fixed;top:64px;left:0;right:0;z-index:998;
+  background:rgba(247,243,237,0.98);
+  border-bottom:2px solid var(--cream3);
+  padding:1rem 2rem 1.5rem;
+  flex-direction:column;gap:0.25rem;
+}
+.nav-mobile.open{display:flex}
+.nav-mobile a{
+  display:block;padding:0.65rem 0.75rem;
+  font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--ink2);text-decoration:none;border-radius:8px;
+  border-bottom:1px solid var(--cream3);
+}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--accent);background:var(--accentl)}
+
+/* Progress scroll bar */
+.scroll-progress{
+  position:fixed;top:64px;left:0;right:0;z-index:998;
+  height:3px;background:var(--cream3);
+}
+.scroll-bar{
+  height:100%;width:0%;
+  background:linear-gradient(to right,var(--accent),var(--accent2));
+  transition:width 0.1s;
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:64px}
+.hero-l{
+  background:var(--ink);position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4.5rem;
+}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb1{width:420px;height:420px;top:-140px;right:-140px;background:radial-gradient(circle,rgba(196,88,31,0.18) 0%,transparent 70%)}
+.orb2{width:260px;height:260px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(196,88,31,0.1) 0%,transparent 70%)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(196,88,31,0.18);border:1px solid rgba(196,88,31,0.35);
+  color:#f09060;font-size:0.74rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.35rem 1rem;border-radius:30px;
+  width:fit-content;margin-bottom:2rem;
+}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,5vw,5rem);font-weight:900;
+  line-height:1.02;letter-spacing:-0.03em;color:#fff;margin-bottom:0.6rem;
+}
+.hero-name em{font-style:normal;color:var(--accent2)}
+.hero-role{
+  font-family:'JetBrains Mono',monospace;font-size:1rem;
+  color:rgba(255,255,255,0.4);margin-bottom:2rem;letter-spacing:0.02em;
+}
+.hero-role b{color:rgba(255,255,255,0.82);font-weight:500}
+.hero-desc{
+  font-size:0.95rem;color:rgba(255,255,255,0.58);line-height:1.82;
+  max-width:400px;margin-bottom:2.8rem;
+}
+.hero-desc strong{color:rgba(255,255,255,0.85);font-weight:500}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:0.72rem 1.75rem;
+  font-size:0.84rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+  border-radius:7px;text-decoration:none;transition:all 0.22s;cursor:pointer;border:none;
+}
+.btn-solid{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(196,88,31,0.35)}
+.btn-solid:hover{background:#a84718;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:rgba(255,255,255,0.72);border:1.5px solid rgba(255,255,255,0.22)}
+.btn-outline:hover{border-color:rgba(255,255,255,0.6);color:#fff}
+
+.hero-r{
+  background:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 4rem 4rem 3.5rem;gap:2rem;
+}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{
+  background:#fff;border:1px solid var(--cream3);
+  border-radius:14px;padding:1.5rem 1.25rem;
+  position:relative;overflow:hidden;
+}
+.stat::after{
+  content:'';position:absolute;bottom:-12px;right:-12px;
+  width:55px;height:55px;border-radius:50%;background:var(--accentl);opacity:0.55;
+}
+.stat-n{
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;
+  color:var(--accent);line-height:1;margin-bottom:0.25rem;
+}
+.stat-l{font-size:0.77rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3)}
+.contact-box{background:var(--ink);border-radius:14px;padding:1.75rem 2rem}
+.contact-title{font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.25rem}
+.cinfo{display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.cinfo:last-child{border-bottom:none}
+.cico{width:30px;height:30px;background:rgba(255,255,255,0.07);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+.cinfo span,.cinfo a{font-size:0.86rem;color:rgba(255,255,255,0.62);text-decoration:none;transition:color 0.2s}
+.cinfo a:hover{color:var(--accent2)}
+
+/* ══════════════════════════════════════
+   SHARED SECTION STYLES
+══════════════════════════════════════ */
+.sec{padding:6rem 0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 2.5rem}
+.sec-pre{font-size:0.7rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.sec-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3vw,2.75rem);font-weight:700;
+  letter-spacing:-0.025em;line-height:1.1;
+  color:var(--ink);margin-bottom:0.75rem;
+}
+.sec-h span{color:var(--accent)}
+.sec-sub{font-size:0.92rem;color:var(--ink3);line-height:1.72;max-width:640px;margin-bottom:3rem}
+.sec-divider{
+  width:60px;height:3px;background:var(--accent);
+  border-radius:2px;margin:0.75rem 0 2.5rem;
+}
+.dark-sec{background:var(--ink)}
+.dark-sec .sec-h{color:#fff}
+.dark-sec .sec-pre{color:var(--accent2)}
+.dark-sec .sec-sub{color:rgba(255,255,255,0.45)}
+.dark-sec .sec-divider{background:var(--accent2)}
+.alt-sec{background:var(--cream2)}
+
+/* ══════════════════════════════════════
+   SKILLS
+══════════════════════════════════════ */
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1.25rem}
+.sgroup{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:14px;padding:1.75rem;
+}
+.sgroup-name{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:1.1rem;
+  padding-bottom:0.75rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.tags{display:flex;flex-wrap:wrap;gap:0.45rem}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:0.76rem;
+  padding:0.28rem 0.75rem;border-radius:5px;
+  border:1px solid rgba(255,255,255,0.11);
+  color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.04);
+  cursor:default;transition:all 0.18s;
+}
+.tag:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tag.hot{background:rgba(196,88,31,0.22);border-color:rgba(196,88,31,0.45);color:#f0956a}
+
+/* ══════════════════════════════════════
+   EXPERIENCE TIMELINE
+══════════════════════════════════════ */
+.tline{position:relative;padding-left:2.5rem}
+.tline::before{
+  content:'';position:absolute;left:6px;top:8px;bottom:0;
+  width:2px;background:linear-gradient(to bottom,var(--accent),var(--cream2));
+}
+.titem{position:relative;margin-bottom:3.5rem}
+.titem::before{
+  content:'';position:absolute;left:-2.45rem;top:8px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--cream);
+  box-shadow:0 0 0 2.5px var(--accent);
+}
+.job-head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.4rem}
+.job-co{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
+.job-date{
+  font-family:'JetBrains Mono',monospace;font-size:0.76rem;
+  background:var(--accent);color:#fff;
+  padding:0.25rem 0.8rem;border-radius:20px;white-space:nowrap;
+}
+.role-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.rt{display:inline-block;font-size:0.72rem;font-weight:600;padding:0.22rem 0.7rem;border-radius:5px}
+.rt-lead{background:var(--accentl);color:var(--accent)}
+.rt-dev{background:var(--navyl);color:var(--navy)}
+.job-p{font-size:0.9rem;color:var(--ink2);line-height:1.78;margin-bottom:0.8rem}
+.jlist{list-style:none}
+.jlist li{font-size:0.87rem;color:var(--ink2);line-height:1.72;padding-left:1.4rem;position:relative;margin-bottom:0.4rem}
+.jlist li::before{content:'›';position:absolute;left:0;color:var(--accent);font-size:1.1rem;line-height:1.5}
+
+/* ══════════════════════════════════════
+   PROJECTS — with clickable cards + modal
+══════════════════════════════════════ */
+.proj-intro{font-size:0.92rem;color:var(--ink2);line-height:1.78;max-width:720px;margin-bottom:1.5rem}
+.proj-domain{
+  display:inline-block;background:var(--accentl);color:var(--accent);
+  font-size:0.77rem;font-weight:600;padding:0.3rem 1rem;
+  border-radius:20px;margin-bottom:2.5rem;
+}
+
+/* Featured card */
+.proj-featured{
+  background:#fff;border:1px solid var(--cream3);
+  border-radius:18px;padding:2.5rem;margin-bottom:2rem;
+  border-left:5px solid var(--accent);
+  cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;
+}
+.proj-featured:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.1)}
+.proj-feat-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.proj-ico{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.proj-feat-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--ink)}
+.proj-code{font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--accent);background:var(--accentl);padding:0.2rem 0.6rem;border-radius:4px}
+.view-detail-hint{
+  font-size:0.75rem;font-weight:600;color:var(--accent);
+  margin-left:auto;padding:0.25rem 0.75rem;
+  border:1px solid var(--accent);border-radius:20px;
+  display:flex;align-items:center;gap:0.3rem;
+}
+.proj-feat-desc{font-size:0.9rem;color:var(--ink2);line-height:1.78;margin-bottom:1.25rem}
+.pmod-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
+.pmod{font-size:0.76rem;font-weight:500;padding:0.25rem 0.7rem;border-radius:5px;background:var(--cream2);color:var(--ink2);border:1px solid var(--cream3)}
+.proj-roles{list-style:none}
+.proj-roles li{font-size:0.86rem;color:var(--ink2);line-height:1.72;padding-left:1.4rem;position:relative;margin-bottom:0.35rem}
+.proj-roles li::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:0.84rem;font-weight:700}
+
+/* Project grid cards */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.pcard{
+  background:#fff;border:1px solid var(--cream3);
+  border-radius:16px;padding:2rem;
+  transition:transform 0.22s,box-shadow 0.22s;
+  display:flex;flex-direction:column;
+  cursor:pointer;position:relative;
+}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.09)}
+.pcard-click-hint{
+  position:absolute;top:1rem;right:1rem;
+  font-size:0.68rem;font-weight:600;color:var(--ink3);
+  background:var(--cream2);border:1px solid var(--cream3);
+  padding:0.18rem 0.55rem;border-radius:20px;
+  opacity:0;transition:opacity 0.2s;
+}
+.pcard:hover .pcard-click-hint{opacity:1}
+.pcard-top{display:flex;align-items:center;gap:0.85rem;margin-bottom:1.1rem}
+.pcard-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.pcard-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.2}
+.pcard-code{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent)}
+.pcard-desc{font-size:0.85rem;color:var(--ink3);line-height:1.7;margin-bottom:1rem;flex:1}
+.pcard-mods{display:flex;flex-wrap:wrap;gap:0.35rem}
+.pcard-mod{font-size:0.71rem;padding:0.18rem 0.55rem;border-radius:4px;background:var(--cream2);color:var(--ink3);border:1px solid var(--cream3)}
+
+/* Tech bar */
+.proj-tech-bar{
+  background:var(--ink);border-radius:14px;
+  padding:1.75rem 2rem;margin-top:2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.ptech-lbl{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.32);white-space:nowrap}
+.ptech-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.ptech{font-family:'JetBrains Mono',monospace;font-size:0.76rem;padding:0.28rem 0.75rem;border-radius:5px;border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.68);background:rgba(255,255,255,0.05)}
+
+/* ══════════════════════════════════════
+   PROJECT DETAIL MODAL (scrollable)
+══════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:1100;
+  background:rgba(13,12,10,0.75);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.28s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--cream);
+  border-radius:20px;
+  width:100%;max-width:720px;
+  max-height:88vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transform:translateY(24px) scale(0.97);
+  transition:transform 0.28s;
+  box-shadow:0 24px 80px rgba(0,0,0,0.3);
+}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+
+/* Modal header — fixed */
+.modal-header{
+  background:var(--ink);
+  padding:1.75rem 2rem;
+  display:flex;align-items:flex-start;
+  justify-content:space-between;gap:1rem;
+  flex-shrink:0;
+}
+.modal-hd-left{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.modal-ico{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#fff;margin-bottom:0.2rem}
+.modal-code{font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:rgba(255,255,255,0.4)}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.65);font-size:1.1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all 0.18s;
+}
+.modal-close:hover{background:rgba(255,255,255,0.18);color:#fff}
+
+/* Modal body — scrollable */
+.modal-body{
+  overflow-y:auto;
+  padding:2rem;
+  flex:1;
+  scroll-behavior:smooth;
+}
+/* Custom scrollbar for modal */
+.modal-body::-webkit-scrollbar{width:6px}
+.modal-body::-webkit-scrollbar-track{background:var(--cream2);border-radius:3px}
+.modal-body::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:3px}
+.modal-body::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+.modal-section{margin-bottom:2rem}
+.modal-sec-title{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.9rem;
+  padding-bottom:0.6rem;
+  border-bottom:1px solid var(--cream3);
+}
+.modal-desc{font-size:0.9rem;color:var(--ink2);line-height:1.78}
+.modal-modules{display:flex;flex-wrap:wrap;gap:0.45rem}
+.modal-mod{
+  font-size:0.77rem;font-weight:500;
+  padding:0.28rem 0.75rem;border-radius:6px;
+  background:var(--cream2);color:var(--ink2);
+  border:1px solid var(--cream3);
+}
+.modal-roles{list-style:none}
+.modal-roles li{
+  font-size:0.88rem;color:var(--ink2);line-height:1.72;
+  padding:0.5rem 0 0.5rem 1.5rem;
+  position:relative;
+  border-bottom:1px solid var(--cream3);
+}
+.modal-roles li:last-child{border-bottom:none}
+.modal-roles li::before{content:'✓';position:absolute;left:0;top:0.5rem;color:var(--green);font-weight:700}
+.modal-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.modal-tag{
+  font-family:'JetBrains Mono',monospace;font-size:0.77rem;
+  padding:0.28rem 0.75rem;border-radius:5px;
+  background:var(--ink);color:rgba(255,255,255,0.72);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.modal-highlight{
+  background:var(--accentl);border:1px solid rgba(196,88,31,0.2);
+  border-radius:12px;padding:1rem 1.25rem;
+  font-size:0.86rem;color:var(--ink2);line-height:1.72;
+  display:flex;gap:0.75rem;align-items:flex-start;
+}
+.modal-highlight-ico{font-size:1.2rem;flex-shrink:0;margin-top:0.1rem}
+
+/* ══════════════════════════════════════
+   RESPONSIBILITIES
+══════════════════════════════════════ */
+.resp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.rcard{background:#fff;border:1px solid var(--cream3);border-radius:14px;padding:1.75rem}
+.rcard-ico{font-size:1.75rem;margin-bottom:0.85rem}
+.rcard-title{font-size:0.94rem;font-weight:600;color:var(--ink);margin-bottom:0.45rem}
+.rcard-desc{font-size:0.85rem;color:var(--ink3);line-height:1.7}
+
+/* ══════════════════════════════════════
+   EDUCATION
+══════════════════════════════════════ */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem}
+.ecard{
+  background:#fff;border:1px solid var(--cream3);
+  border-radius:14px;padding:2rem;
+  border-top:4px solid var(--accent);
+  transition:transform 0.2s;
+}
+.ecard:hover{transform:translateY(-3px)}
+.ecard-deg{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
+.ecard-school{font-size:0.87rem;font-weight:500;color:var(--ink2);margin-bottom:0.2rem}
+.ecard-uni{font-size:0.8rem;color:var(--ink3);margin-bottom:0.75rem}
+.ecard-yr{font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:var(--ink3);margin-bottom:0.75rem}
+.ebadge{display:inline-block;font-size:0.72rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:20px}
+
+/* ══════════════════════════════════════
+   ABOUT / PERSONAL
+══════════════════════════════════════ */
+.per-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:2.5rem}
+.percard{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.75rem;text-align:center}
+.percard-ico{font-size:2rem;margin-bottom:0.75rem}
+.percard-lbl{font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:0.4rem}
+.percard-val{font-size:0.94rem;font-weight:500;color:rgba(255,255,255,0.76)}
+.strengths-row{display:flex;gap:1rem;flex-wrap:wrap}
+.strength{display:flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:0.9rem 1.25rem;flex:1;min-width:155px}
+.strength-ico{font-size:1.4rem}
+.strength-txt{font-size:0.87rem;color:rgba(255,255,255,0.68);font-weight:500}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{background:#080706;padding:3.5rem 0;text-align:center}
+.ft-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem}
+.ft-role{font-family:'JetBrains Mono',monospace;font-size:0.83rem;color:rgba(255,255,255,0.28);margin-bottom:1.75rem}
+.ft-links{display:flex;justify-content:center;align-items:center;gap:0;list-style:none;margin-bottom:2rem;flex-wrap:wrap}
+.ft-links li{display:flex;align-items:center}
+.ft-links a{font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;padding:0 1rem;transition:color 0.2s}
+.ft-links a:hover{color:var(--accent2)}
+.ft-sep{width:1px;height:14px;background:rgba(255,255,255,0.12)}
+.ft-copy{font-size:0.77rem;color:rgba(255,255,255,0.16)}
+
+/* ══════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.08s}
+.reveal-d2{transition-delay:0.16s}
+.reveal-d3{transition-delay:0.24s}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   CONTACT POPUP
+══════════════════════════════════════ */
+.contact-popup-overlay{
+  position:fixed;inset:0;z-index:1200;
+  background:rgba(13,12,10,0.65);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s;
+}
+.contact-popup-overlay.open{opacity:1;pointer-events:all}
+.contact-popup{
+  background:var(--cream);
+  border-radius:20px;
+  width:100%;max-width:400px;
+  padding:2.25rem 2rem 2rem;
+  transform:translateY(20px) scale(0.97);
+  transition:transform 0.25s;
+  box-shadow:0 24px 70px rgba(0,0,0,0.28);
+  position:relative;
+}
+.contact-popup-overlay.open .contact-popup{transform:translateY(0) scale(1)}
+.contact-popup-close{
+  position:absolute;top:1rem;right:1rem;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--cream2);border:1px solid var(--cream3);
+  color:var(--ink3);font-size:1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 0.18s;
+}
+.contact-popup-close:hover{background:var(--cream3);color:var(--ink)}
+.contact-popup-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;color:var(--ink);
+  margin-bottom:0.3rem;
+}
+.contact-popup-sub{font-size:0.82rem;color:var(--ink3);margin-bottom:1.75rem}
+.contact-popup-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 1.1rem;
+  border-radius:12px;
+  text-decoration:none;
+  margin-bottom:0.85rem;
+  transition:transform 0.18s,box-shadow 0.18s;
+  border:1px solid transparent;
+}
+.contact-popup-item:last-child{margin-bottom:0}
+.contact-popup-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.contact-popup-item.whatsapp{background:#e8f9f0;border-color:#b2dfca}
+.contact-popup-item.gmail{background:#fce8e6;border-color:#f5b8b4}
+.contact-popup-icon{
+  width:46px;height:46px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.contact-popup-icon svg{width:28px;height:28px}
+.contact-popup-info{}
+.contact-popup-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.1rem}
+.contact-popup-value{font-size:0.92rem;font-weight:600;color:var(--ink)}
+
+@media(max-width:920px){
+  nav{padding:0 1.25rem}
+  .nav-menu{display:none}
+  .nav-burger{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-l{min-height:72vh;padding:4rem 1.75rem}
+  .hero-r{padding:3rem 1.75rem}
+  .wrap{padding:0 1.25rem}
+  .sec{padding:4rem 0}
+  .modal{max-height:92vh}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-brand"><span class="nav-brand-dot"></span> Rakesh Mali</a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#skills" class="nav-link">Skills</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#experience" class="nav-link">Experience</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#projects" class="nav-link">Projects</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#responsibilities" class="nav-link">Roles</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#education" class="nav-link">Education</a></li>
+    <li><div class="nav-sep"></div></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li class="nav-hire-wrap"><a href="https://mail.google.com/mail/?view=cm&to=malirakesh236@gmail.com" target="_blank" class="nav-hire">✉ Hire Me</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="nav-mobile" id="mobileMenu">
+  <a href="#home">🏠 Home</a>
+  <a href="#skills">⚡ Skills</a>
+  <a href="#experience">💼 Experience</a>
+  <a href="#projects">🚀 Projects</a>
+  <a href="#responsibilities">📋 Responsibilities</a>
+  <a href="#education">🎓 Education</a>
+  <a href="#about">👤 About</a>
+  <a href="https://mail.google.com/mail/?view=cm&to=malirakesh236@gmail.com" target="_blank" style="color:var(--accent);font-weight:700">✉ Hire Me</a>
+</div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress"><div class="scroll-bar" id="scrollBar"></div></div>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-l">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="hero-badge"><span class="badge-dot"></span> Open to Opportunities</div>
+    <h1 class="hero-name">Rakesh<br><em>Mali</em></h1>
+    <p class="hero-role">&lt; <b>.NET Developer &amp; Team Leader</b> /&gt;</p>
+    <p class="hero-desc">
+      <strong>3+ years</strong> building scalable Transport Management Systems using ASP.NET MVC, C#, SQL Server and SSRS. Progressed from Junior Developer to <strong>Team Leader</strong> leading TNS &amp; BLT teams at Cygnus Softech Pvt. Ltd.
+    </p>
+    <div class="hero-btns">
+      <button onclick="openContactPopup()" class="btn btn-solid">📧 Contact Me</button>
+      <a href="#projects" class="btn btn-outline">View Projects ↓</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Years Experience</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">TMS Projects Shipped</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">Teams Led</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Languages Spoken</div></div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-title">Contact Information</div>
+      <div class="cinfo"><div class="cico">📧</div><a href="mailto:malirakesh236@gmail.com">malirakesh236@gmail.com</a></div>
+      <div class="cinfo"><div class="cico">📱</div><span>9773477829 &nbsp;/&nbsp; 8238382730</span></div>
+      <div class="cinfo"><div class="cico">📍</div><span>Plot 236, Swaminarayan Nagar, Godadra, Surat</span></div>
+      <div class="cinfo"><div class="cico">🗓️</div><span>DOB: 2 March 1998</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SKILLS
+══════════════════════════════════════ -->
+<section id="skills" class="sec dark-sec">
+  <div class="wrap">
+    <p class="sec-pre">Technical Expertise</p>
+    <h2 class="sec-h">Skills &amp; <span>Technologies</span></h2>
+    <div class="sec-divider"></div>
+    <div class="skills-wrap reveal">
+      <div class="sgroup">
+        <div class="sgroup-name">Core Backend</div>
+        <div class="tags">
+          <span class="tag hot">C#</span>
+          <span class="tag hot">ASP.NET MVC</span>
+          <span class="tag hot">.NET Framework</span>
+          <span class="tag hot">Entity Framework</span>
+          <span class="tag">MVC Architecture</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <div class="sgroup-name">Database &amp; Reporting</div>
+        <div class="tags">
+          <span class="tag hot">SQL Server</span>
+          <span class="tag hot">SSRS</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">Stored Procedures</span>
+          <span class="tag">MS Excel</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <div class="sgroup-name">Frontend &amp; Scripting</div>
+        <div class="tags">
+          <span class="tag hot">jQuery</span>
+          <span class="tag hot">Ajax</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <div class="sgroup-name">Languages</div>
+        <div class="tags">
+          <span class="tag hot">C#</span>
+          <span class="tag">C / C++</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <div class="sgroup-name">Tools &amp; OS</div>
+        <div class="tags">
+          <span class="tag">Visual Studio</span>
+          <span class="tag">Windows</span>
+          <span class="tag">Ubuntu</span>
+          <span class="tag">MS-DOS</span>
+          <span class="tag">MS Office</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <div class="sgroup-name">Soft Skills</div>
+        <div class="tags">
+          <span class="tag hot">Team Leadership</span>
+          <span class="tag">Requirements Gathering</span>
+          <span class="tag">Code Review</span>
+          <span class="tag">Mentoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════ -->
+<section id="experience" class="sec" style="background:var(--cream)">
+  <div class="wrap">
+    <p class="sec-pre">Career Journey</p>
+    <h2 class="sec-h">Work <span>Experience</span></h2>
+    <div class="sec-divider"></div>
+    <div class="tline reveal">
+      <div class="titem">
+        <div class="job-head">
+          <div class="job-co">Cygnus Softech Pvt. Ltd.</div>
+          <span class="job-date">Jan 2023 – May 2026</span>
+        </div>
+        <div class="role-tags">
+          <span class="rt rt-dev">Jr. .NET Developer — 2 Years</span>
+          <span class="rt rt-lead">Team Leader — TNS &amp; BLT — 1 Year</span>
+        </div>
+        <p class="job-p">Joined as a Junior .NET Developer and progressed to Team Leader within 2 years. Led the TNS and BLT logistics teams overseeing requirements gathering, feature delivery, bug resolution, and team mentoring across 7 Transport Management System projects.</p>
+        <ul class="jlist">
+          <li>Built and maintained 7 TMS web applications covering Air, Road, Railway, and Ship route management</li>
+          <li>Developed complete Customer, Consignee, and Dealer modules (full front-end and back-end)</li>
+          <li>Implemented real-time docket tracking — state-wise and city-wise delivery status</li>
+          <li>Created automated document generation with email dispatch notifications to customers</li>
+          <li>Designed reverse operation modules allowing users to correct data-entry mistakes</li>
+          <li>Integrated multi-currency support for MMG Logistics Africa — country-wise currency changes</li>
+          <li>Generated SSRS reports for operational dashboards and client billing documents</li>
+          <li>Led knowledge-sharing sessions for team members on new features and enhancements</li>
+          <li>Handled issue fixing across multiple modules of the web platform</li>
+        </ul>
+      </div>
+      <div class="titem">
+        <div class="job-head">
+          <div class="job-co">Desai Metropolis Healthcare Ltd.</div>
+          <span class="job-date">Oct 2022 – Jan 2023</span>
+        </div>
+        <div class="role-tags"><span class="rt rt-dev">Support Executive</span></div>
+        <p class="job-p">Provided technical and operational support in a healthcare enterprise environment. Built foundations in client communication, problem-solving, and enterprise software workflows.</p>
+        <ul class="jlist">
+          <li>Day-to-day technical and operational support to end users</li>
+          <li>Exposure to enterprise healthcare software environments</li>
+          <li>Developed professional communication and issue-resolution skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════ -->
+<section id="projects" class="sec alt-sec">
+  <div class="wrap">
+    <p class="sec-pre">Work Portfolio</p>
+    <h2 class="sec-h">Projects — <span>Transport Management Systems</span></h2>
+    <div class="sec-divider"></div>
+    <p class="proj-intro">All projects below were developed at <strong>Cygnus Softech Pvt. Ltd.</strong> — full-stack TMS web applications handling multi-route logistics, customer/consignee/dealer management, docket tracking, manifest processing, and automated document generation. <strong>Click any project card to view full details.</strong></p>
+    <span class="proj-domain">Domain: Web Development — Transport Management Systems</span>
+
+    <!-- Featured: RGL -->
+    <div class="proj-featured reveal" onclick="openModal('rgl')">
+      <div class="proj-feat-top">
+        <div class="proj-ico" style="background:#fde8db">🚚</div>
+        <div>
+          <div class="proj-feat-name">Right Gear Logistics</div>
+          <span class="proj-code">RGL</span>
+        </div>
+        <div class="view-detail-hint">Click for full details →</div>
+      </div>
+      <p class="proj-feat-desc">A comprehensive TMS managing transportation across Air, Road, Railway, and Ship routes. Provides services to Customers, Consignees, and Dealers with state-wise and city-wise delivery tracking. Docket tracking shows real-time status throughout the supply chain.</p>
+      <div class="pmod-row">
+        <span class="pmod">Customer Module</span><span class="pmod">Consignee Module</span><span class="pmod">Dealer Module</span>
+        <span class="pmod">Contract Module</span><span class="pmod">Docket Booking</span><span class="pmod">Manifest</span>
+        <span class="pmod">Route Tracking</span><span class="pmod">Delivery Module</span>
+      </div>
+    </div>
+
+    <!-- Grid: 6 other projects -->
+    <div class="proj-grid reveal reveal-d1">
+
+      <div class="pcard" onclick="openModal('gil')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#d6e8ff">🌐</div>
+          <div><div class="pcard-name">Great Indian Logistics</div><div class="pcard-code">GIL</div></div>
+        </div>
+        <p class="pcard-desc">Pan-India TMS platform — multi-route logistics from contract creation to docket booking, manifest processing, and tracked delivery across India.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">Docket Booking</span><span class="pcard-mod">Manifest</span>
+          <span class="pcard-mod">Tracking</span><span class="pcard-mod">Delivery</span><span class="pcard-mod">Customer Module</span>
+        </div>
+      </div>
+
+      <div class="pcard" onclick="openModal('blt')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#d4edd9">📦</div>
+          <div><div class="pcard-name">BLT Logistics</div><div class="pcard-code">BLT</div></div>
+        </div>
+        <p class="pcard-desc">One of the primary team-led projects. Full SDLC from requirements to deployment. Led team, mentored developers, and delivered transport booking &amp; tracking features.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">Team Led</span><span class="pcard-mod">Docket Booking</span>
+          <span class="pcard-mod">Manifest</span><span class="pcard-mod">SSRS Reports</span>
+        </div>
+      </div>
+
+      <div class="pcard" onclick="openModal('cts')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#f5edd4">🏭</div>
+          <div><div class="pcard-name">Chintamani Transport</div><div class="pcard-code">CTS</div></div>
+        </div>
+        <p class="pcard-desc">Complete Customer, Consignee, and Dealer modules. Data-entry reverse operations, issue fixing, and delivery tracking across all web sections.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">Customer</span><span class="pcard-mod">Consignee</span>
+          <span class="pcard-mod">Dealer</span><span class="pcard-mod">Reverse Ops</span>
+        </div>
+      </div>
+
+      <div class="pcard" onclick="openModal('buraq')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#f0ddf5">✈️</div>
+          <div><div class="pcard-name">Buraq Logistics</div><div class="pcard-code">Buraq</div></div>
+        </div>
+        <p class="pcard-desc">International TMS with multi-currency support — country-wise currency changes for MMG Logistics Africa. Cross-border contracts, billing, and route management.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">International</span><span class="pcard-mod">Multi-Currency</span>
+          <span class="pcard-mod">MMG Africa</span><span class="pcard-mod">Contract Module</span>
+        </div>
+      </div>
+
+      <div class="pcard" onclick="openModal('tns')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#ddeeff">⏱️</div>
+          <div><div class="pcard-name">Time and Safe Logistics</div><div class="pcard-code">TNS</div></div>
+        </div>
+        <p class="pcard-desc">Led development as Team Leader — TNS team. Reverse operations, document generation with automated email triggers, full front-end and back-end features.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">Team Led</span><span class="pcard-mod">Reverse Ops</span>
+          <span class="pcard-mod">Doc Generation</span><span class="pcard-mod">Email Automation</span>
+        </div>
+      </div>
+
+      <div class="pcard" onclick="openModal('btcpl')">
+        <span class="pcard-click-hint">View details</span>
+        <div class="pcard-top">
+          <div class="pcard-ico" style="background:#ddefee">🏢</div>
+          <div><div class="pcard-name">Bhor Transport Co.</div><div class="pcard-code">BTCPL</div></div>
+        </div>
+        <p class="pcard-desc">Corporate TMS with docket booking, manifest handling, SSRS-based report generation. Automated document dispatch via email, consignee and dealer data modules.</p>
+        <div class="pcard-mods">
+          <span class="pcard-mod">Docket Booking</span><span class="pcard-mod">SSRS Reports</span>
+          <span class="pcard-mod">Email Dispatch</span><span class="pcard-mod">Dealer Module</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tech bar -->
+    <div class="proj-tech-bar reveal reveal-d2">
+      <span class="ptech-lbl">Tech Stack</span>
+      <div class="ptech-tags">
+        <span class="ptech">C# / ASP.NET MVC</span>
+        <span class="ptech">Entity Framework</span>
+        <span class="ptech">SQL Server</span>
+        <span class="ptech">SSRS</span>
+        <span class="ptech">jQuery</span>
+        <span class="ptech">Ajax</span>
+        <span class="ptech">HTML5 / CSS3</span>
+        <span class="ptech">JavaScript</span>
+        <span class="ptech">Visual Studio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     RESPONSIBILITIES
+══════════════════════════════════════ -->
+<section id="responsibilities" class="sec" style="background:var(--cream)">
+  <div class="wrap">
+    <p class="sec-pre">Day-to-Day Work</p>
+    <h2 class="sec-h">Key <span>Responsibilities</span></h2>
+    <div class="sec-divider"></div>
+    <div class="resp-grid reveal">
+      <div class="rcard"><div class="rcard-ico">📋</div><div class="rcard-title">Requirements Gathering</div><div class="rcard-desc">Coordinating with development teams and stakeholders to determine application requirements, user stories, and functional specifications for each module.</div></div>
+      <div class="rcard"><div class="rcard-ico">💻</div><div class="rcard-title">Scalable Code Writing</div><div class="rcard-desc">Writing clean, scalable, and maintainable code using C# and .NET following MVC architecture patterns and development best practices.</div></div>
+      <div class="rcard"><div class="rcard-ico">🔧</div><div class="rcard-title">Testing &amp; Debugging</div><div class="rcard-desc">Testing and debugging applications, identifying root causes of issues, and fixing bugs across various modules of the web platform efficiently.</div></div>
+      <div class="rcard"><div class="rcard-ico">⚙️</div><div class="rcard-title">Backend Development</div><div class="rcard-desc">Developing robust back-end components including business logic, data access layers, stored procedures, and SSRS report generation.</div></div>
+      <div class="rcard"><div class="rcard-ico">🖥️</div><div class="rcard-title">Frontend Integration</div><div class="rcard-desc">Integrating user-facing elements using server-side logic — binding data from controllers to Razor views using jQuery and Ajax.</div></div>
+      <div class="rcard"><div class="rcard-ico">👥</div><div class="rcard-title">Team Leadership</div><div class="rcard-desc">Leading TNS and BLT teams — code reviews, knowledge-sharing sessions, guiding junior developers, and coordinating sprint deliveries.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EDUCATION
+══════════════════════════════════════ -->
+<section id="education" class="sec alt-sec">
+  <div class="wrap">
+    <p class="sec-pre">Academic Background</p>
+    <h2 class="sec-h">Education &amp; <span>Certifications</span></h2>
+    <div class="sec-divider"></div>
+    <div class="edu-grid reveal">
+      <div class="ecard" style="border-top-color:var(--accent)">
+        <div class="ecard-deg">Bachelor of Computer Application (BCA)</div>
+        <div class="ecard-school">Vimal Toraml Poddar BCA College</div>
+        <div class="ecard-uni">Veer Narmad South Gujarat University (VNSGU)</div>
+        <div class="ecard-yr">📅 Passed: March 2019</div>
+        <span class="ebadge" style="background:var(--accentl);color:var(--accent)">Second Class</span>
+      </div>
+      <div class="ecard" style="border-top-color:var(--navy)">
+        <div class="ecard-deg">MVC .NET Professional Course</div>
+        <div class="ecard-school">Tops Technology, Ringroad, Surat</div>
+        <div class="ecard-uni">Industry Training Certification</div>
+        <div class="ecard-yr">🏅 Certified in ASP.NET MVC Development</div>
+        <span class="ebadge" style="background:var(--navyl);color:var(--navy)">Certified</span>
+      </div>
+      <div class="ecard" style="border-top-color:var(--green)">
+        <div class="ecard-deg">Higher Secondary Certificate (HSC)</div>
+        <div class="ecard-school">Sarvjanik Highschool</div>
+        <div class="ecard-uni">Gandhinagar Board</div>
+        <div class="ecard-yr">📅 Passed: March 2016</div>
+        <span class="ebadge" style="background:var(--greenl);color:var(--green)">59%</span>
+      </div>
+      <div class="ecard" style="border-top-color:var(--gold)">
+        <div class="ecard-deg">Secondary School Certificate (SSC)</div>
+        <div class="ecard-school">Suman Highschool-5</div>
+        <div class="ecard-uni">Gandhinagar Board</div>
+        <div class="ecard-yr">📅 Passed: March 2014</div>
+        <span class="ebadge" style="background:var(--goldl);color:var(--gold)">63%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about" class="sec dark-sec">
+  <div class="wrap">
+    <p class="sec-pre">Personal Details</p>
+    <h2 class="sec-h">About <span style="color:var(--accent2)">Rakesh</span></h2>
+    <div class="sec-divider"></div>
+    <div class="per-grid reveal">
+      <div class="percard"><div class="percard-ico">🎂</div><div class="percard-lbl">Date of Birth</div><div class="percard-val">2 March 1998</div></div>
+      <div class="percard"><div class="percard-ico">👤</div><div class="percard-lbl">Gender</div><div class="percard-val">Male</div></div>
+      <div class="percard"><div class="percard-ico">📍</div><div class="percard-lbl">Location</div><div class="percard-val">Surat, Gujarat</div></div>
+      <div class="percard"><div class="percard-ico">🌐</div><div class="percard-lbl">Languages</div><div class="percard-val">Gujarati, Hindi, English, Marathi</div></div>
+    </div>
+    <p class="sec-pre" style="margin-bottom:1.25rem">Professional Strengths</p>
+    <div class="strengths-row reveal reveal-d1">
+      <div class="strength"><span class="strength-ico">🤝</span><span class="strength-txt">Honest &amp; Trustworthy</span></div>
+      <div class="strength"><span class="strength-ico">🔥</span><span class="strength-txt">Passionate About Work</span></div>
+      <div class="strength"><span class="strength-ico">😊</span><span class="strength-txt">Friendly &amp; Cooperative</span></div>
+      <div class="strength"><span class="strength-ico">📈</span><span class="strength-txt">Continuous Learner</span></div>
+    </div>
+    <div style="margin-top:3rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:2rem;max-width:580px" class="reveal reveal-d2">
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);font-style:italic;line-height:1.78;margin-bottom:0.75rem">"I hereby declare that the above-mentioned information is true to the best of my knowledge."</p>
+      <p style="font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,255,255,0.72);font-weight:600">— Rakesh Sukhdev Mali</p>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);margin-top:0.3rem">Place: Surat</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="ft-name">Rakesh Sukhdev Mali</div>
+  <div class="ft-role">{ .NET Developer · Team Leader · Surat, Gujarat }</div>
+  <ul class="ft-links">
+    <li><a href="#home">Home</a></li><li><div class="ft-sep"></div></li>
+    <li><a href="#skills">Skills</a></li><li><div class="ft-sep"></div></li>
+    <li><a href="#experience">Experience</a></li><li><div class="ft-sep"></div></li>
+    <li><a href="#projects">Projects</a></li><li><div class="ft-sep"></div></li>
+    <li><a href="#education">Education</a></li><li><div class="ft-sep"></div></li>
+    <li><a href="mailto:malirakesh236@gmail.com">Email</a></li>
+  </ul>
+  <div class="ft-copy">© 2026 Rakesh Mali &nbsp;·&nbsp; malirakesh236@gmail.com &nbsp;·&nbsp; 9773477829</div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     PROJECT DETAIL MODAL (scrollable)
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-hd-left">
+        <div class="modal-ico" id="modalIco"></div>
+        <div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-code" id="modalCode"></div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" title="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── SCROLL PROGRESS BAR ─── */
+window.addEventListener('scroll', () => {
+  const s = document.documentElement;
+  const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+  document.getElementById('scrollBar').style.width = pct + '%';
+});
+
+/* ─── ACTIVE NAV LINKS ─── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.nav-link[href="#' + e.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => observer.observe(s));
+
+/* ─── MOBILE MENU ─── */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+/* ─── REVEAL ANIMATIONS ─── */
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ─── PROJECT DATA ─── */
+const projects = {
+  rgl: {
+    ico: '🚚', bg: '#fde8db',
+    name: 'Right Gear Logistics', code: 'RGL',
+    highlight: 'Primary project — full-stack development with all 8 core TMS modules built end-to-end.',
+    desc: 'A comprehensive Transport Management System that manages transportation across Air, Road, Railway, and Ship routes. Provides services to Customers, Consignees, and Dealers — delivering products to allocated addresses with complete state-wise and city-wise tracking. Docket tracking shows real-time delivery status throughout the entire supply chain.',
+    modules: ['Customer Module','Consignee Module','Dealer Module','Contract Module','Docket Booking','Manifest Management','Route Tracking','Delivery Module'],
+    roles: [
+      'Requirements gathering and analysis with stakeholders and management',
+      'Full front-end and back-end development for Customer, Consignee, and Dealer modules',
+      'Docket tracking implementation — state/city-wise delivery status in real-time',
+      'Issue fixing and quality assurance across all web modules',
+      'Document generation with automated email notifications to users',
+      'Integration of multi-route handling: Air, Road, Railway, Ship'
+    ],
+    tech: ['C#','ASP.NET MVC','Entity Framework','SQL Server','SSRS','jQuery','Ajax','HTML5','CSS3']
+  },
+  gil: {
+    ico: '🌐', bg: '#d6e8ff',
+    name: 'Great Indian Logistics', code: 'GIL',
+    highlight: 'Pan-India logistics platform handling multi-route transportation across all Indian states.',
+    desc: 'A nationwide Transport Management System covering multi-route logistics operations. Manages the complete customer lifecycle — from contract creation through docket booking, manifest processing, and tracked delivery across India with state-wise and city-wise granularity.',
+    modules: ['Customer Module','Consignee Module','Contract Module','Docket Booking','Manifest Management','Route Tracking','Delivery Module'],
+    roles: [
+      'Developed customer and consignee module with complete data management',
+      'Built docket booking system with automated manifest generation',
+      'Implemented state and city-wise delivery tracking module',
+      'Issue resolution and bug fixing across all platform sections',
+      'Integration of multiple transport routes including Road and Rail'
+    ],
+    tech: ['C#','ASP.NET MVC','Entity Framework','SQL Server','jQuery','Ajax','HTML5','SSRS']
+  },
+  blt: {
+    ico: '📦', bg: '#d4edd9',
+    name: 'BLT Logistics', code: 'BLT',
+    highlight: 'Team Leader on this project — managed 1 full year of development from planning to delivery.',
+    desc: 'One of the two primary projects led as Team Leader. Handled the complete software development lifecycle from initial requirements through deployment. Developed core transport booking, manifest, and tracking features while simultaneously mentoring junior developers on the team.',
+    modules: ['Docket Booking','Manifest Management','Route Tracking','Delivery Module','SSRS Reports','Document Generation'],
+    roles: [
+      'Served as Team Leader — managed team assignments and sprint planning',
+      'Gathered and documented all functional requirements from stakeholders',
+      'Developed core docket booking and manifest management features',
+      'Generated and deployed SSRS reports for management dashboards',
+      'Conducted code reviews and guided junior developer growth',
+      'Knowledge-sharing sessions for new functionalities and enhancements',
+      'End-to-end testing, bug fixing, and deployment coordination'
+    ],
+    tech: ['C#','ASP.NET MVC','Entity Framework','SQL Server','SSRS','jQuery','Ajax','HTML5']
+  },
+  cts: {
+    ico: '🏭', bg: '#f5edd4',
+    name: 'Chintamani Transport Service', code: 'CTS',
+    highlight: 'Specialised focus on reverse operation modules — allowing correction of user-side data entry mistakes.',
+    desc: 'A Transport Management System with a strong focus on data integrity. Developed complete Customer, Consignee, and Dealer modules from scratch. Key contribution was building the reverse operation feature — allowing users to undo and correct data-entry mistakes at multiple stages. Also handled comprehensive issue fixing across all web sections.',
+    modules: ['Customer Module','Consignee Module','Dealer Module','Docket Booking','Reverse Operations','Delivery Tracking'],
+    roles: [
+      'Built complete Customer, Consignee, and Dealer data management modules',
+      'Designed and implemented reverse operation functionality for data correction',
+      'Fixed issues and bugs in various areas of the web platform',
+      'Developed delivery tracking with docket status visibility',
+      'User-side data entry validation and error handling'
+    ],
+    tech: ['C#','ASP.NET MVC','SQL Server','Entity Framework','jQuery','Ajax','HTML5','CSS3']
+  },
+  buraq: {
+    ico: '✈️', bg: '#f0ddf5',
+    name: 'Buraq Logistics', code: 'Buraq',
+    highlight: 'International TMS with multi-currency integration — specifically built for Africa (MMG Logistics) operations.',
+    desc: 'An international Transport Management System built for cross-border logistics operations. The standout feature is the country-wise multi-currency engine, developed specifically for MMG Logistics Africa — enabling seamless billing and contracts in local currencies across different African countries. Handles all standard TMS modules alongside the international payment infrastructure.',
+    modules: ['International Routes','Multi-Currency Engine','Contract Module','Docket Booking','Manifest Management','Billing Module'],
+    roles: [
+      'Implemented country-wise currency change system for MMG Logistics Africa',
+      'Built multi-currency billing and contract management features',
+      'Developed international route management (Air and Road)',
+      'Customer and consignee module development for cross-border users',
+      'Integration testing for currency conversion accuracy',
+      'Issue resolution and platform maintenance'
+    ],
+    tech: ['C#','ASP.NET MVC','SQL Server','Entity Framework','jQuery','Ajax','HTML5','CSS3']
+  },
+  tns: {
+    ico: '⏱️', bg: '#ddeeff',
+    name: 'Time and Safe Logistics', code: 'TNS',
+    highlight: 'Team Leader on this project — led the TNS team for 1 year alongside BLT.',
+    desc: 'One of the two primary projects managed as Team Leader. The TNS team was responsible for the complete lifecycle of this transport platform. Key features include the reverse operation module for user data correction and an automated document generation system that triggers email notifications to users upon document creation.',
+    modules: ['Docket Booking','Manifest Management','Reverse Operations','Document Generation','Email Automation','Delivery Tracking'],
+    roles: [
+      'Led the TNS team as Team Leader — planning, reviews, and delivery',
+      'Built reverse operation modules for data correction at multiple stages',
+      'Developed automated document generation with triggered email dispatch',
+      'Front-end and back-end development for all core modules',
+      'Knowledge-sharing and mentoring of team members',
+      'Requirements gathering and stakeholder coordination',
+      'Bug fixing and quality assurance across all platform sections'
+    ],
+    tech: ['C#','ASP.NET MVC','SQL Server','SSRS','Entity Framework','jQuery','Ajax','HTML5']
+  },
+  btcpl: {
+    ico: '🏢', bg: '#ddefee',
+    name: 'Bhor Transport Company Pvt. Ltd.', code: 'BTCPL',
+    highlight: 'SSRS-powered reporting and automated email document dispatch — key corporate billing features.',
+    desc: 'A corporate Transport Management System for Bhor Transport Company. Core deliverables included a comprehensive SSRS reporting suite for management dashboards and client billing, alongside an automated document dispatch system that emails generated documents directly to users. Full consignee and dealer module development was also completed end-to-end.',
+    modules: ['Docket Booking','Manifest Management','Consignee Module','Dealer Module','SSRS Reports','Email Document Dispatch'],
+    roles: [
+      'Built consignee and dealer data management modules end-to-end',
+      'Developed SSRS report suite for management dashboards and billing',
+      'Implemented automated email dispatch on document generation',
+      'Docket booking and manifest management features',
+      'Issue fixing across various web platform sections',
+      'Data validation and quality testing of SSRS reports'
+    ],
+    tech: ['C#','ASP.NET MVC','SQL Server','SSRS','Entity Framework','jQuery','Ajax','HTML5']
+  }
+};
+
+/* ─── OPEN MODAL ─── */
+function openModal(id) {
+  const p = projects[id];
+  if (!p) return;
+  document.getElementById('modalIco').style.cssText = 'background:' + p.bg;
+  document.getElementById('modalIco').textContent = p.ico;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalCode').textContent = p.code + ' — Transport Management System';
+
+  let html = '';
+
+  html += `<div class="modal-section">
+    <div class="modal-highlight">
+      <div class="modal-highlight-ico">⭐</div>
+      <div>${p.highlight}</div>
+    </div>
+  </div>`;
+
+  html += `<div class="modal-section">
+    <div class="modal-sec-title">Project Overview</div>
+    <p class="modal-desc">${p.desc}</p>
+  </div>`;
+
+  html += `<div class="modal-section">
+    <div class="modal-sec-title">Modules Developed</div>
+    <div class="modal-modules">
+      ${p.modules.map(m => `<span class="modal-mod">${m}</span>`).join('')}
+    </div>
+  </div>`;
+
+  html += `<div class="modal-section">
+    <div class="modal-sec-title">Roles &amp; Responsibilities</div>
+    <ul class="modal-roles">
+      ${p.roles.map(r => `<li>${r}</li>`).join('')}
+    </ul>
+  </div>`;
+
+  html += `<div class="modal-section">
+    <div class="modal-sec-title">Technologies Used</div>
+    <div class="modal-tags">
+      ${p.tech.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+    </div>
+  </div>`;
+
+  document.getElementById('modalBody').innerHTML = html;
+  document.getElementById('modalBody').scrollTop = 0;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function openContactPopup() {
+  document.getElementById('contactPopupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactPopup() {
+  document.getElementById('contactPopupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeContactOutside(e) {
+  if (e.target === document.getElementById('contactPopupOverlay')) closeContactPopup();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeContactPopup(); } });
+
+
+</script>
+<!-- ══════════════════════════════════════
+     CONTACT POPUP
+══════════════════════════════════════ -->
+<div class="contact-popup-overlay" id="contactPopupOverlay" onclick="closeContactOutside(event)">
+  <div class="contact-popup">
+    <button class="contact-popup-close" onclick="closeContactPopup()">✕</button>
+    <div class="contact-popup-title">Get In Touch</div>
+    <div class="contact-popup-sub">Reach out via WhatsApp or Email — happy to connect!</div>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919773477829" target="_blank" class="contact-popup-item whatsapp">
+      <div class="contact-popup-icon" style="background:#25D366">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.666 4.8 1.826 6.8L2 30l7.4-1.8A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#fff"/>
+          <path d="M16 3.8c-6.73 0-12.2 5.47-12.2 12.2 0 2.26.62 4.37 1.7 6.18l.22.37-1.37 5.01 5.15-1.35.36.21A12.18 12.18 0 0016 28.2c6.73 0 12.2-5.47 12.2-12.2S22.73 3.8 16 3.8zm6.07 17.36c-.26.73-1.52 1.38-2.09 1.44-.57.06-1.1.27-3.72-.78-3.13-1.25-5.14-4.42-5.3-4.62-.16-.2-1.28-1.71-1.28-3.26s.81-2.31 1.1-2.63c.29-.32.63-.4.84-.4.21 0 .42.002.6.01.19.008.45-.073.7.535.26.62.88 2.15.96 2.31.08.16.13.35.026.56-.1.21-.16.34-.31.52-.16.19-.33.42-.47.56-.16.16-.32.33-.14.65.18.32.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.5 1.54.32.16.5.13.69-.08.19-.21.8-.94 1.01-1.26.21-.32.42-.26.71-.16.29.1 1.84.87 2.16 1.03.32.16.53.24.61.37.08.13.08.75-.18 1.48z" fill="#25D366"/>
+        </svg>
+      </div>
+      <div class="contact-popup-info">
+        <div class="contact-popup-label">WhatsApp</div>
+        <div class="contact-popup-value">+91 97734 77829</div>
+      </div>
+    </a>
+
+    <!-- Gmail -->
+    <a href="https://mail.google.com/mail/?view=cm&to=malirakesh236@gmail.com" target="_blank" class="contact-popup-item gmail">
+      <div class="contact-popup-icon" style="background:#fff;border:1px solid #f5b8b4">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 8.5v15A2.5 2.5 0 004.5 26h3.5V14.4L16 20l8-5.6V26h3.5A2.5 2.5 0 0030 23.5v-15A2.5 2.5 0 0027.5 6h-.18L16 13.5 4.68 6H4.5A2.5 2.5 0 002 8.5z" fill="#EA4335"/>
+          <path d="M8 14.4V26h16V14.4L16 20z" fill="#FBBC05"/>
+          <path d="M2 8.5A2.5 2.5 0 014.5 6h.18L16 13.5 27.32 6h.18A2.5 2.5 0 0130 8.5v.5L16 18 2 9v-.5z" fill="#4285F4"/>
+          <path d="M2 9v14.5A2.5 2.5 0 004.5 26H8V14.4z" fill="#34A853"/>
+          <path d="M24 14.4V26h3.5A2.5 2.5 0 0030 23.5V9z" fill="#EA4335"/>
+        </svg>
+      </div>
+      <div class="contact-popup-info">
+        <div class="contact-popup-label">Gmail</div>
+        <div class="contact-popup-value">malirakesh236@gmail.com</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
